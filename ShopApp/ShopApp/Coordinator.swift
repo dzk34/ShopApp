@@ -15,7 +15,7 @@ protocol CoordinatorProtocol {
 }
 
 
-class Coordinator: CoordinatorProtocol {
+class Coordinator: CoordinatorProtocol, ObservableObject {
     var path: NavigationPath = NavigationPath()
     
     func push(page: AppPages) {
