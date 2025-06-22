@@ -17,6 +17,7 @@ enum RequestType: String {
 
 protocol RequestProtocol {
     var path: String { get }
+    var requestType: RequestType { get }
 }
 
 extension RequestProtocol {
@@ -29,7 +30,16 @@ extension RequestProtocol {
     }
     
     func createURLRequest() throws -> URLRequest {
-        var urlRequest = URLRequest(url: URL(string: "url"))
+        var components = URLComponents()
+        components.scheme = scheme
+        components.host = host
+        components.path = path
+
+        guard let url = components.url else { throw NetworkError.invalidUrl }
+
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = requestType.rawValue
+
         return urlRequest
     }
 }
