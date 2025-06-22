@@ -6,25 +6,35 @@
 //
 
 import Foundation
+import SwiftUI
 
 protocol CoordinatorProtocol {
-    func push(page: String)
+    func push(page: AppPages)
     func pop()
     func popToRoot()
 }
 
 
 class Coordinator: CoordinatorProtocol {
-    func push(page: String) {
-        
+    var path: NavigationPath = NavigationPath()
+    
+    func push(page: AppPages) {
+        path.append(page)
     }
     
     func pop() {
-        
+        path.removeLast()
     }
     
     func popToRoot() {
-        
+        path.removeLast(path.count)
     }
     
+    @ViewBuilder
+    func build(page: AppPages) -> some View {
+        switch page {
+        case .main:
+            ProductListingView()
+        }
+    }
 }
