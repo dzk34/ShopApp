@@ -22,6 +22,6 @@ final class ProductListingViewModelTests: XCTestCase {
 
     func test_performRequest_shouldReturnData()  {
         sut.fetchData()
-        XCTAssertNotNil(sut.product)
+        XCTAssertNotNil(sut.products)
     }
 }

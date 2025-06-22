@@ -7,6 +7,14 @@
 
 import Foundation
 
-final class ProductListingViewModel {
-    
+protocol ProductListingViewModelProtocol {
+    func fetchData()
+}
+
+final class ProductListingViewModel: ObservableObject, ProductListingViewModelProtocol {
+    var products: [Product] = []
+
+    func fetchData() {
+        products = []
+    }
 }
