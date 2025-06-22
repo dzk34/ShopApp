@@ -9,4 +9,5 @@ import Foundation
 
 enum AppPages: Hashable {
     case main
+    case basket
 }

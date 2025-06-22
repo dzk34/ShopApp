@@ -16,7 +16,7 @@ protocol CoordinatorProtocol {
 
 
 class Coordinator: CoordinatorProtocol, ObservableObject {
-    var path: NavigationPath = NavigationPath()
+    @Published var path: NavigationPath = NavigationPath()
     
     func push(page: AppPages) {
         path.append(page)
@@ -35,6 +35,8 @@ class Coordinator: CoordinatorProtocol, ObservableObject {
         switch page {
         case .main:
             ProductListingView()
+        case .basket:
+            BasketView()
         }
     }
 }
