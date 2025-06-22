@@ -11,7 +11,7 @@ struct ProductList {
     let products: [Product]
 }
 
-struct Product: Codable {
+struct Product: Codable, Identifiable {
     let id: String
     let name: String
     let price: String

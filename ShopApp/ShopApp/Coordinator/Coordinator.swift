@@ -34,7 +34,7 @@ class Coordinator: CoordinatorProtocol, ObservableObject {
     func build(page: AppPages) -> some View {
         switch page {
         case .main:
-            ProductListingView()
+            ProductListingView(viewModel: ProductListingViewModel())
         case .basket:
             BasketView()
         }

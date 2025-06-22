@@ -11,6 +11,7 @@ public enum NetworkError: LocalizedError {
     case failedResponse
     case failedDecoding
     case invalidUrl
+    case invalidServerResponse
     
     public var customMessage: String {
         switch self {
@@ -20,6 +21,8 @@ public enum NetworkError: LocalizedError {
             return "Error: failed decoding"
         case .invalidUrl:
             return "Error: invalid URL"
+        case .invalidServerResponse:
+            return "Error: invalid server response"
         }
     }
 }

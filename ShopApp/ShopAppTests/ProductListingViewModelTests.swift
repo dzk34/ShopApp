@@ -20,8 +20,8 @@ final class ProductListingViewModelTests: XCTestCase {
         sut = nil
     }
 
-    func test_performRequest_shouldReturnData()  {
-        sut.fetchData()
+    func test_performRequest_shouldReturnData() async {
+        await sut.fetchData()
         XCTAssertNotNil(sut.products)
     }
 }

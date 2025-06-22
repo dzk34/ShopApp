@@ -9,8 +9,18 @@ import SwiftUI
 
 struct ProductListingView: View {
     @EnvironmentObject private var coordinator: Coordinator
+    @ObservedObject var viewModel: ProductListingViewModel
 
     var body: some View {
+        List {
+            ForEach(viewModel.products) { product in
+                Text(product.name)
+            }
+        }
+        .task {
+            await viewModel.fetchData()
+        }
+
         Text("ProductListingView")
         Button {
             coordinator.push(page: .basket)
@@ -21,5 +31,5 @@ struct ProductListingView: View {
 }
 
 #Preview {
-    ProductListingView()
+    ProductListingView(viewModel: ProductListingViewModel())
 }
