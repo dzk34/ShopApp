@@ -40,6 +40,7 @@ extension RequestProtocol {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = requestType.rawValue
 
+        print("Calling \(url)")
         return urlRequest
     }
 }

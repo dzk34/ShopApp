@@ -21,13 +21,11 @@ final class ProductListingViewModel: ObservableObject, ProductListingViewModelPr
         self.productFetcher = productFetcher
     }
 
+    @MainActor
     func fetchData() async  {
-        print("fetchData")
         isLoading = true
         
-        products = [Product(id: "1", name: "product 1", price: "10", image: ""),
-                    Product(id: "2", name: "product 2", price: "20", image: ""),
-                    Product(id: "3", name: "product 3", price: "30", image: "")]
+        self.products = await productFetcher.fetchProducts()
         isLoading = false
     }
 }
