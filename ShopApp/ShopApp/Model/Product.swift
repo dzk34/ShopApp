@@ -7,13 +7,17 @@
 
 import Foundation
 
-struct ProductList: Codable {
-    let products: [Product]
+struct Product: Codable, Identifiable, Hashable {
+    let id: Int
+    let title: String
+    let price: Float
+    let description: String
+    let category: String
+    let image: String
+    let rating: Rating
 }
 
-struct Product: Codable, Identifiable, Hashable {
-    let id: String
-    let name: String
-    let price: String
-    let image: String
+struct Rating: Codable, Hashable {
+    let rate: Float
+    let count: Int
 }

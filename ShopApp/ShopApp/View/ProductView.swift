@@ -15,20 +15,18 @@ struct ProductView: View {
             AsyncImage(url: URL(string: product.image)) { result in
                 result.image?
                     .resizable()
-                    .scaledToFill()
-                    
+                    .scaledToFit()
             }
-            .frame(width: 240, height: 240)
 
-            Text(product.name)
+            Text(product.title)
                 .font(.title)
             
-            Text(product.price)
+            Text("\(product.price, specifier: "%.2f")")
         }
         .padding()
     }
 }
 
 #Preview {
-    ProductView(product: Product(id: "1", name: "Test Shirt", price: "£199", image: "https://media.endclothing.com/media/f_auto,q_auto,w_760,h_760/prodmedia/media/catalog/product/2/6/26-03-2018_gosha_rubchinskiyxadidas_copaprimeknitboostmidsneaker_yellow_g012sh12-220_ka_1.jpg"))
+    ProductView(product: Product(id: 1, title: "Mens Casual Premium Slim Fit T-Shirts", price: 22.3, description: "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.", category: "men's clothing", image: "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg", rating: Rating(rate: 4.1, count: 259)))
 }

@@ -17,7 +17,7 @@ enum ProductRequest: RequestProtocol {
     var path: String {
         switch self {
         case .products:
-            return "/media/catalog/example.json"
+            return "/products"
         }
     }
 }

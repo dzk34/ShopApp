@@ -22,8 +22,8 @@ struct ProductFetcher: ProductFetcherProtocol {
         let requestData = ProductRequest.products
 
         do {
-            let productList: ProductList = try await requestManager.perform(requestData)
-            return productList.products
+            let productList: [Product] = try await requestManager.perform(requestData)
+            return productList//.products
         } catch {
             print(error)
             return []
