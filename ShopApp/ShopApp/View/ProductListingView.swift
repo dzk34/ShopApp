@@ -15,6 +15,9 @@ struct ProductListingView: View {
         List {
             ForEach(viewModel.products) { product in
                 ProductView(product: product)
+                    .onTapGesture {
+                        coordinator.push(page: .productDetails(product))
+                    }
             }
         }
         .task {

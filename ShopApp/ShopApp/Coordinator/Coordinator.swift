@@ -37,6 +37,8 @@ class Coordinator: CoordinatorProtocol, ObservableObject {
             ProductListingView(viewModel: ProductListingViewModel(productFetcher: ProductFetcher(requestManager: RequestManager())))
         case .basket:
             BasketView()
+        case .productDetails(let product):
+            ProductDetailsView(product: product)
         }
     }
 }
