@@ -11,17 +11,23 @@ struct ProductView: View {
     let product: Product
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .center) {
             AsyncImage(url: URL(string: product.image)) { result in
                 result.image?
                     .resizable()
                     .scaledToFit()
             }
+            .frame(width: 180, height: 180)
 
             Text(product.title)
-                .font(.title)
+                .font(.body)
+                .padding()
             
-            Text("\(product.price, specifier: "%.2f")")
+            Text(product.category)
+                .font(.caption)
+                .foregroundStyle(.gray)
+
+            Text("£\(product.price, specifier: "%.2f")")
         }
         .padding()
     }

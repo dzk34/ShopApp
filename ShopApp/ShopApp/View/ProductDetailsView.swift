@@ -10,7 +10,24 @@ import SwiftUI
 struct ProductDetailsView: View {
     var product: Product
     var body: some View {
-        Text("ProductDetailsView : \(product.title)")
+        ScrollView {
+            VStack {
+                AsyncImage(url: URL(string: product.image)) { result in
+                    result.image?
+                        .resizable()
+                        .scaledToFit()
+                }
+                
+                Text(product.title)
+                    .padding()
+                Text("£\(product.price, specifier: "%.2f")")
+                Text(product.description)
+                    .padding()
+                Text(product.category)
+                    .foregroundStyle(.gray)
+                Text("\(product.rating.rate, specifier: "%.2f") (\(product.rating.count))")
+            }
+        }
     }
 }
 

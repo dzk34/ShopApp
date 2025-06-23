@@ -9,26 +9,23 @@ import SwiftUI
 
 struct ProductListingView: View {
     @EnvironmentObject private var coordinator: Coordinator
-    @ObservedObject var viewModel: ProductListingViewModel
+    @StateObject var viewModel: ProductListingViewModel
 
+    let columns = [GridItem(.flexible()), GridItem(.flexible())]
+    
     var body: some View {
-        List {
-            ForEach(viewModel.products) { product in
-                ProductView(product: product)
-                    .onTapGesture {
-                        coordinator.push(page: .productDetails(product))
-                    }
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: 20) {
+                ForEach(viewModel.products) { product in
+                    ProductView(product: product)
+                        .onTapGesture {
+                            coordinator.push(page: .productDetails(product))
+                        }
+                }
             }
         }
         .task {
             await viewModel.fetchData()
-        }
-
-        Text("ProductListingView")
-        Button {
-            coordinator.push(page: .basket)
-        } label: {
-            Text("View My Basket")
         }
     }
 }
