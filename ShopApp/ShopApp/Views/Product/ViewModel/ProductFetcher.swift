@@ -8,21 +8,20 @@
 import Foundation
 
 protocol ProductFetcherProtocol {
-    func fetchProducts() async -> [Product]
+    func fetchProducts() async throws -> [Product]
 }
 
 struct ProductFetcher: ProductFetcherProtocol {
     @Inject(\.requestManager) var requestManager: RequestManagerProtocol
 
-    func fetchProducts() async -> [Product] {
+    func fetchProducts() async throws -> [Product] {
         let requestData = ProductRequest.products
 
         do {
             let productList: [Product] = try await requestManager.perform(requestData)
             return productList
         } catch {
-            print(error)
-            return []
+            throw NetworkError.noData
         }
     }
 }

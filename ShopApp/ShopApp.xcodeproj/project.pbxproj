@@ -29,9 +29,22 @@
 		29F98EAE2E08632E00A5C6AD /* ShopAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShopAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		29AF560D2E0A9DB700E62835 /* Exceptions for "ShopApp" folder in "ShopAppTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Model/Product.json,
+			);
+			target = 29F98EA32E08632E00A5C6AD /* ShopAppTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		29F98E962E08632D00A5C6AD /* ShopApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				29AF560D2E0A9DB700E62835 /* Exceptions for "ShopApp" folder in "ShopAppTests" target */,
+			);
 			path = ShopApp;
 			sourceTree = "<group>";
 		};

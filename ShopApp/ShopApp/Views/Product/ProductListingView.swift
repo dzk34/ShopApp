@@ -10,7 +10,7 @@ import SwiftUI
 struct ProductListingView: View {
     @EnvironmentObject private var coordinator: Coordinator
     @StateObject private var viewModel = ProductListingViewModel()
-
+    
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
@@ -33,6 +33,12 @@ struct ProductListingView: View {
         }
         .task {
             await viewModel.fetchData()
+        }
+        .alert(isPresented: $viewModel.showAlert, error: viewModel.errorMessage) { _ in
+          Button("OK") {
+          }
+        } message: { error in
+          Text("Try again later.")
         }
     }
 }

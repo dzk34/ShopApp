@@ -12,6 +12,7 @@ public enum NetworkError: LocalizedError {
     case failedDecoding
     case invalidUrl
     case invalidServerResponse
+    case noData
     
     public var customMessage: String {
         switch self {
@@ -23,6 +24,8 @@ public enum NetworkError: LocalizedError {
             return "Error: invalid URL"
         case .invalidServerResponse:
             return "Error: invalid server response"
+        case .noData:
+            return "Error: no data found"
         }
     }
 }
