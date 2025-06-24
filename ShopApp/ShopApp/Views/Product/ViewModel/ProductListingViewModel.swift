@@ -9,7 +9,7 @@ import Foundation
 
 
 protocol ProductListingViewModelProtocol {
-    func fetchData() async
+    func fetchData() async throws
 }
 
 final class ProductListingViewModel: ObservableObject, ProductListingViewModelProtocol {
@@ -17,18 +17,15 @@ final class ProductListingViewModel: ObservableObject, ProductListingViewModelPr
     
     @Published var isLoading: Bool = false
     @Published var products: [Product] = []
-    @Published var errorMessage: AppStateError? = nil
-    @Published var showAlert = false
 
     @MainActor
-    func fetchData() async  {
+    func fetchData() async throws {
         isLoading = true
         
         do {
             self.products = try await productFetcher.fetchProducts()
         } catch {
-            errorMessage = AppStateError.someError
-            showAlert = true
+            throw AppStateError.noValidData
         }
         isLoading = false
     }
