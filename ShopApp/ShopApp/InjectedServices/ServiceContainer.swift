@@ -9,6 +9,10 @@ import Foundation
 
 // MARK: Injected Services
 
+private struct URLSessionKey: InjectedServiceKey {
+    static var currentValue: URLSessionProtocol = URLSession(configuration: .default)
+}
+
 private struct RequestManagerKey: InjectedServiceKey {
     static var currentValue: RequestManagerProtocol = RequestManager()
 }
@@ -26,6 +30,11 @@ private struct ProductFetcherKey: InjectedServiceKey {
 }
 
 extension InjectedServiceValues {
+    var urlSession: URLSessionProtocol {
+        get { Self[URLSessionKey.self] }
+        set { Self[URLSessionKey.self] = newValue }
+    }
+
     var requestManager: RequestManagerProtocol {
         get { Self[RequestManagerKey.self] }
         set { Self[RequestManagerKey.self] = newValue }

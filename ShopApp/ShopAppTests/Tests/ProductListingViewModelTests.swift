@@ -11,8 +11,10 @@ import XCTest
 
 final class ProductListingViewModelTests: XCTestCase {
     var sut: ProductListingViewModel!
+    var dataParser: DataParserProtocol!
 
     override func setUpWithError() throws {
+        dataParser = DataParser()
         sut = ProductListingViewModel()
     }
     
