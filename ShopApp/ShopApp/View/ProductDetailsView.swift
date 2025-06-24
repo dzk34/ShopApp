@@ -19,14 +19,24 @@ struct ProductDetailsView: View {
                 }
                 
                 Text(product.title)
+                    .font(.title)
                     .padding()
+                
                 Text("£\(product.price, specifier: "%.2f")")
+                    .font(.title2)
+                
                 Text(product.description)
+                    .font(.title2)
                     .padding()
+                
                 Text(product.category)
+                    .font(.title3)
                     .foregroundStyle(.gray)
-                Text("\(product.rating.rate, specifier: "%.2f") (\(product.rating.count))")
+                    .padding()
+                
+                Text("Rating: \(product.rating.rate, specifier: "%.2f") (\(product.rating.count))")
             }
+            .padding()
         }
     }
 }
