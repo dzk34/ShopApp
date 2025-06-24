@@ -12,3 +12,4 @@ What's next?
 - move to a tab based UI
 - implement a MainTabCoordinator and then multiple Coordinators for each tab
 - update unit tests
+- improve app state management
