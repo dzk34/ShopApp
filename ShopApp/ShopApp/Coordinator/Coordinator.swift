@@ -34,7 +34,7 @@ class Coordinator: CoordinatorProtocol, ObservableObject {
     func build(page: AppPages) -> some View {
         switch page {
         case .main:
-            ProductListingView(viewModel: ProductListingViewModel(productFetcher: ProductFetcher(requestManager: RequestManager())))
+            ProductListingView()
         case .basket:
             BasketView()
         case .productDetails(let product):

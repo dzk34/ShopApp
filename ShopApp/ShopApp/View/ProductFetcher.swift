@@ -12,18 +12,14 @@ protocol ProductFetcherProtocol {
 }
 
 struct ProductFetcher: ProductFetcherProtocol {
-    var requestManager: RequestManagerProtocol
-    
-    init(requestManager: RequestManagerProtocol) {
-        self.requestManager = requestManager
-    }
-    
+    @Inject(\.requestManager) var requestManager: RequestManagerProtocol
+
     func fetchProducts() async -> [Product] {
         let requestData = ProductRequest.products
 
         do {
             let productList: [Product] = try await requestManager.perform(requestData)
-            return productList//.products
+            return productList
         } catch {
             print(error)
             return []

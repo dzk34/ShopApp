@@ -15,9 +15,10 @@ struct ProductView: View {
             AsyncImage(url: URL(string: product.image)) { result in
                 result.image?
                     .resizable()
-                    .scaledToFit()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 180)
+                    .clipped()
             }
-            .frame(width: 180, height: 180)
 
             Text(product.title)
                 .font(.body)

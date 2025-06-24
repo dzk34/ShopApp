@@ -12,14 +12,10 @@ protocol ProductListingViewModelProtocol {
 }
 
 final class ProductListingViewModel: ObservableObject, ProductListingViewModelProtocol {
-    let productFetcher: ProductFetcherProtocol
+    @Inject(\.productFetcher) var productFetcher: ProductFetcherProtocol
     
     @Published var isLoading: Bool = false
     @Published var products: [Product] = []
-
-    init(productFetcher: ProductFetcherProtocol) {
-        self.productFetcher = productFetcher
-    }
 
     @MainActor
     func fetchData() async  {
