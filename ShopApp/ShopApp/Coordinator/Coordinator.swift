@@ -39,6 +39,8 @@ class Coordinator: CoordinatorProtocol, ObservableObject {
             BasketView()
         case .productDetails(let product):
             ProductDetailsView(product: product)
+        case .profile:
+            ProfileView()
         }
     }
 }

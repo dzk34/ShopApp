@@ -11,4 +11,5 @@ enum AppPages: Hashable {
     case main
     case basket
     case productDetails(Product)
+    case profile
 }
