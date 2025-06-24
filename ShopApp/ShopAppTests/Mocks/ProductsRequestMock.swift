@@ -10,7 +10,7 @@ import Foundation
 @testable import ShopApp
 
 enum ProductsRequestMock: RequestProtocol {
-    case getProducts
+    case fetchProducts
 
     var requestType: RequestType {
         return .get
