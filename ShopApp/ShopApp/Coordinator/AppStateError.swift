@@ -8,18 +8,18 @@
 import Foundation
 
 enum AppStateError: LocalizedError {
-  case someError
+  case noValidData
 
   var errorDescription: String? {
     switch self {
-    case .someError:
+    case .noValidData:
       return "Something went wrong"
     }
   }
 
   var recoverySuggestion: String? {
     switch self {
-    case .someError:
+    case .noValidData:
       return "Please try again."
     }
   }

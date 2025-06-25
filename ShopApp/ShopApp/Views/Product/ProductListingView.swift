@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct ProductListingView: View {
-    @EnvironmentObject private var coordinator: Coordinator
+    @Environment(AppRouter.self) private var router
     @StateObject private var viewModel = ProductListingViewModel()
-    
+    @State var errorMessage: AppStateError? = nil
+    @State var showAlert = false
+
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
@@ -23,7 +25,7 @@ struct ProductListingView: View {
                         ForEach(viewModel.products) { product in
                             ProductView(product: product)
                                 .onTapGesture {
-                                    coordinator.push(page: .productDetails(product))
+                                    router.navigate(to: Destination.productDetails(product))
                                 }
                         }
                     }
@@ -32,9 +34,13 @@ struct ProductListingView: View {
             }
         }
         .task {
-            await viewModel.fetchData()
+            do {
+                try await viewModel.fetchData()
+            } catch {
+                
+            }
         }
-        .alert(isPresented: $viewModel.showAlert, error: viewModel.errorMessage) { _ in
+        .alert(isPresented: $showAlert, error: errorMessage) { _ in
           Button("OK") {
           }
         } message: { error in
