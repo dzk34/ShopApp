@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProductListingView: View {
-    @EnvironmentObject private var coordinator: Coordinator
+    @Environment(AppRouter.self) private var router
     @StateObject private var viewModel = ProductListingViewModel()
     @State var errorMessage: AppStateError? = nil
     @State var showAlert = false
@@ -25,7 +25,7 @@ struct ProductListingView: View {
                         ForEach(viewModel.products) { product in
                             ProductView(product: product)
                                 .onTapGesture {
-                                    coordinator.push(page: .productDetails(product))
+                                    router.navigate(to: Destination.productDetails(product))
                                 }
                         }
                     }

@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct AppTabCoordinator: View {
-    @State private var path = [Int]()
+    @State var router: AppRouter = .init()
+    
     var body: some View {
-        NavigationStack(path: $path) {
-            
+        NavigationStack(path: $router.navigationPath) {
+            ProductListingCoordinator()
         }
+        .environment(router)
     }
 }
 

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 protocol CoordinatorProtocol {
-    func push(page: AppPages)
+    func push(page: Destination)
     func pop()
     func popToRoot()
 }
@@ -18,7 +18,7 @@ protocol CoordinatorProtocol {
 class Coordinator: CoordinatorProtocol, ObservableObject {
     @Published var path: NavigationPath = NavigationPath()
     
-    func push(page: AppPages) {
+    func push(page: Destination) {
         path.append(page)
     }
     
@@ -31,16 +31,16 @@ class Coordinator: CoordinatorProtocol, ObservableObject {
     }
     
     @ViewBuilder
-    func build(page: AppPages) -> some View {
+    func build(page: Destination) -> some View {
         switch page {
-        case .main:
-            ProductListingView()
-        case .basket:
-            BasketView()
+//        case .main:
+//            ProductListingView()
+//        case .basket:
+//            BasketView()
         case .productDetails(let product):
             ProductDetailsView(product: product)
-        case .profile:
-            ProfileView()
+//        case .profile:
+//            ProfileView()
         }
     }
 }

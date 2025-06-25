@@ -7,9 +7,7 @@
 
 import Foundation
 
-enum AppPages: Hashable {
-    case main
-    case basket
+enum Destination: Hashable {
     case productDetails(Product)
-    case profile
 }
+

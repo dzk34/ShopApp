@@ -18,6 +18,25 @@ struct AppTabView: View {
                     Text("Home")
                         .tag(0)
                 }
+            
+            ExploreTabCoordinator()
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                    Text("Explore")
+                        .tag(1)
+                }
+            BasketTabCoordinator()
+                .tabItem {
+                    Image(systemName: "basket")
+                    Text("Basket")
+                        .tag(2)
+                }
+            ProfileTabCoordinator()
+                .tabItem {
+                    Image(systemName: "person.crop.circle")
+                    Text("Profile")
+                        .tag(3)
+                }
         }
     }
 }
