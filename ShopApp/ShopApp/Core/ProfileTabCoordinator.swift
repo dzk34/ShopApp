@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileTabCoordinator: View {
     var body: some View {
-        Text("ProfileTabCoordinator")
+        ProfileView()
     }
 }
 

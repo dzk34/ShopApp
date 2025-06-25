@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BasketTabCoordinator: View {
     var body: some View {
-        Text("BasketTabCoordinator")
+        BasketView()
     }
 }
 
