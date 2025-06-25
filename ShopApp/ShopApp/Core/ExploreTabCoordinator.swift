@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ExploreTabCoordinator: View {
+    @Environment(AppRouter.self) private var router
+
     var body: some View {
-        Text("ExploreTabCoordinator")
+        ExploreView()
     }
 }
 

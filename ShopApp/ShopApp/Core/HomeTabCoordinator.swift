@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AppTabCoordinator: View {
+struct HomeTabCoordinator: View {
     @State var router: AppRouter = .init()
     
     var body: some View {
@@ -19,5 +19,5 @@ struct AppTabCoordinator: View {
 }
 
 #Preview {
-    AppTabCoordinator()
+    HomeTabCoordinator()
 }
