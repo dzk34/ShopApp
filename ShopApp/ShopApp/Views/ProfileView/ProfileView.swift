@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @Environment(AppRouter.self) private var router
-
     var body: some View {
         Text("ProfileView: coming soon")
     }

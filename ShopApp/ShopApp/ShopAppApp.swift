@@ -9,12 +9,9 @@ import SwiftUI
 
 @main
 struct ShopAppApp: App {
-//    let tabBarCoordinator = TabBarCoordinator()
-    
     var body: some Scene {
         WindowGroup {
             AppTabView()
-//            TabBarView(coordinator: tabBarCoordinator)
         }
     }
 }
