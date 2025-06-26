@@ -8,27 +8,40 @@
 import SwiftUI
 
 struct ProductView: View {
+    @EnvironmentObject var cartManager: CartManager
     let product: Product
     
     var body: some View {
-        VStack(alignment: .center) {
-            AsyncImage(url: URL(string: product.image)) { result in
-                result.image?
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 180)
-                    .clipped()
+        ZStack(alignment: .topTrailing) {
+            VStack(alignment: .center) {
+                AsyncImage(url: URL(string: product.image)) { result in
+                    result.image?
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 180)
+                        .clipped()
+                }
+                
+                Text(product.title)
+                    .font(.body)
+                    .padding()
+                
+                Text(product.category)
+                    .font(.caption)
+                    .foregroundStyle(.gray)
+                
+                Text("£\(product.price, specifier: "%.2f")")
             }
-
-            Text(product.title)
-                .font(.body)
-                .padding()
-            
-            Text(product.category)
-                .font(.caption)
-                .foregroundStyle(.gray)
-
-            Text("£\(product.price, specifier: "%.2f")")
+            Button {
+                cartManager.addToCart(product: product)
+            } label: {
+                Image(systemName: "plus")
+                    .padding(10)
+                    .foregroundColor(.white)
+                    .background(.black)
+                    .cornerRadius(50)
+                    .padding()
+            }
         }
         .padding()
     }

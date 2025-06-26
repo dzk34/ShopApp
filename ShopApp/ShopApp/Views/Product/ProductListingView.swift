@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProductListingView: View {
     @Environment(AppRouter.self) private var router
+    @EnvironmentObject var cartManager: CartManager
     @StateObject private var viewModel = ProductListingViewModel()
     @State var errorMessage: AppStateError? = nil
     @State var showAlert = false
@@ -27,6 +28,7 @@ struct ProductListingView: View {
                                 .onTapGesture {
                                     router.navigate(to: Destination.productDetails(product))
                                 }
+                                .environmentObject(cartManager)
                         }
                     }
                 }
