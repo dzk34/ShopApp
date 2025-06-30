@@ -16,6 +16,7 @@ final class APIManagerTests: XCTestCase {
     var dataParser: DataParserProtocol!
 
     override func setUpWithError() throws {
+        try super.setUpWithError()
         let product1 = Product(id: 1, title: "title1", price: 9.99, description: "description1", category: "category1", image: "", rating: Rating(rate: 3.5, count: 20))
         let product2 = Product(id: 2, title: "title2", price: 10.49, description: "description2", category: "category2", image: "", rating: Rating(rate: 4.7, count: 35))
         
@@ -25,6 +26,7 @@ final class APIManagerTests: XCTestCase {
     }
     
     override func tearDownWithError() throws {
+        try super.tearDownWithError()
         sessionMock = nil
         dataParser = nil
         sut = nil
