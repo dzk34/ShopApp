@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProductView: View {
-    @EnvironmentObject var cartManager: CartManager
+    @Inject(\.cartManager) var cartManager: CartManagerProtocol
     let product: Product
     
     var body: some View {
