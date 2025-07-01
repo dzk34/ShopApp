@@ -7,10 +7,20 @@
 
 import Foundation
 
-class CartManager: ObservableObject {
-    @Published private(set) var products: [Product] = []
-    @Published private(set) var total: Float = 0.0
-    @Published var paymentSuccess = false
+protocol CartManagerProtocol {
+    func addToCart(product: Product)
+    func removeFromCart(product: Product)
+    var products: [Product] { get set }
+    var total: Float { get set }
+}
+
+class CartManager: ObservableObject, CartManagerProtocol {
+    @Published var total: Float = 0.0
+    
+    @Published var products: [Product] = []
+    
+//    @Published private(set) var products: [Product] = []
+//    @Published private(set) var total: Float = 0.0
 
     func addToCart(product: Product) {
         products.append(product)
@@ -22,4 +32,3 @@ class CartManager: ObservableObject {
         total -= product.price
     }
 }
-

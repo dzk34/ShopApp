@@ -43,6 +43,7 @@ final class ProductListingViewModelTests: XCTestCase {
     }
 
     func test_products_shouldReturnListOfProducts() async throws {
+    
         try await sut.fetchData()
 
         let expectedProduct1 = Product(id: 1, title: "title1", price: 9.99, description: "description1", category: "category1", image: "", rating: Rating(rate: 3.5, count: 20))

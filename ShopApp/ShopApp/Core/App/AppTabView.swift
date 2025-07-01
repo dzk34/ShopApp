@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AppTabView: View {
     @State private var selection = 0
-    @StateObject var cartManager = CartManager()
 
     var body: some View {
         TabView(selection: $selection) {
@@ -19,7 +18,6 @@ struct AppTabView: View {
                     Text("Home")
                         .tag(0)
                 }
-                .environmentObject(cartManager)
             
             ExploreTabCoordinator()
                 .tabItem {
@@ -34,7 +32,6 @@ struct AppTabView: View {
                     Text("Cart")
                         .tag(2)
                 }
-                .environmentObject(cartManager)
 
             ProfileTabCoordinator()
                 .tabItem {

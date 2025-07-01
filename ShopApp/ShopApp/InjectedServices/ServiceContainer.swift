@@ -25,6 +25,10 @@ private struct DataParserKey: InjectedServiceKey {
     static var currentValue: DataParserProtocol = DataParser()
 }
 
+private struct CartManagerKey: InjectedServiceKey {
+    static var currentValue: CartManagerProtocol = CartManager()
+}
+
 private struct ProductFetcherKey: InjectedServiceKey {
     static var currentValue: ProductFetcherProtocol = ProductFetcher()
 }
@@ -48,6 +52,11 @@ extension InjectedServiceValues {
     var dataParser: DataParserProtocol {
         get { Self[DataParserKey.self] }
         set { Self[DataParserKey.self] = newValue }
+    }
+    
+    var cartManager: CartManagerProtocol {
+        get { Self[CartManagerKey.self] }
+        set { Self[CartManagerKey.self] = newValue }
     }
     
     var productFetcher: ProductFetcherProtocol {

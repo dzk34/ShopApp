@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CartView: View {
-    @EnvironmentObject var cartManager: CartManager
+    @Inject(\.cartManager) var cartManager: CartManagerProtocol
 
     var body: some View {
         ScrollView {
